@@ -1,20 +1,30 @@
-# AI Bot that opens a website when the user types ONLY the website name
-# Example input: google  -> opens https://www.google.com
-
 import webbrowser
 
-print("Hello! I am AI Bot. What's your name? : ")
-name = input().strip()
+print("Hello! I am AI Bot.")
 
+name = input("What's your name? : ").strip()
 print(f"Nice to meet you, {name}!")
 
-print("Which website do you want to open? (example: google, youtube, wikipedia) : ")
-site_name = input().strip().lower()
+while True:
+    mood = input("\nHow are you feeling? (happy/sad/ok): ").strip().lower()
 
-# Build a simple URL: https://www.<name>.com
-url = f"https://www.{site_name}.com"
+    # Emotion-based response
+    if mood == "happy":
+        print("That's nice to hear 😊")
+    elif mood == "sad":
+        print("I hope you feel better soon 😔")
+    else:
+        print("Alright! Let's continue 🙂")
 
-print(f"Opening {url} now...")
-webbrowser.open(url)
+    site_name = input(
+        "Which website do you want to open? (example: google, youtube): "
+    ).strip().lower()
 
-print(f"It was nice chatting with you {name}. Bye!")
+    url = f"https://www.{site_name}.com"
+    print(f"Opening {url} now...")
+    webbrowser.open(url)
+
+    again = input("\nDo you want to continue? (yes/no): ").strip().lower()
+    if again != "yes":
+        print(f"It was nice chatting with you, {name}. Bye!")
+        break
